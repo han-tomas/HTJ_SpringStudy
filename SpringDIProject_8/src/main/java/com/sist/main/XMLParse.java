@@ -69,7 +69,7 @@ public class XMLParse extends DefaultHandler{
 					String mName=m.getName(); // 메소드 이름
 					for(int i=0;i<ss.length;i++)
 					{
-						if(mName.equalsIgnoreCase("set"+ss[i].substring(ss[i].indexOf(":"+1))))
+						if(mName.equalsIgnoreCase("set"+ss[i].substring(ss[i].indexOf(":")+1)))
 						{
 							if(i==0)
 							{

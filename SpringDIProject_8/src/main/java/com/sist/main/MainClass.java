@@ -110,7 +110,7 @@ public class MainClass {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String path="C:\\springDev\\springStudy\\SpringDIProject_8\\src\\main\\java\\com\\sist\\main\\app.xml";
+		String path="C:\\Users\\SIST\\git\\HTJ_SpringStudy\\SpringDIProject_8\\src\\main\\java\\com\\sist\\main\\app.xml";
 		ApplicationContext app= new ClassPathApplicationContext(path);
 		Sawon sa=(Sawon)app.getBean("sa");
 		System.out.println("사번 : "+sa.getSabun());
