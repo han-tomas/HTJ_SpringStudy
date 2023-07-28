@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.*;
 import com.sist.dao.*;
 import com.sist.vo.BoardVO;
+
+import jdk.internal.icu.text.NormalizerBase.Mode;
 //메모리할당
 @Controller
 @RequestMapping("board/")
@@ -53,6 +55,13 @@ public class BoardController {
 		return "redirect:list.do";
 	}
 	// 데이터 수정
+	@GetMapping("update.do")
+	public String board_update(int no,Model model)
+	{
+		BoardVO vo = dao.boardUpdateData(no);
+		model.addAttribute("vo",vo);
+		return "board/update";
+	}
 	// 데이터 삭제
 	// 상세보기
 	/*
@@ -74,6 +83,34 @@ public class BoardController {
 		model.addAttribute("vo",vo);
 		return "board/detail";
 	}
+	@GetMapping("delete.do")
+	public String board_delete(int no,Model model)
+	{
+		model.addAttribute("no",no);
+		return "board/delete";
+	}
+	@PostMapping("delete_ok.do")
+	public String board_delete_ok(int no,String pwd,Model model)
+	{
+		boolean bCheck=dao.boardDelete(no, pwd);
+		model.addAttribute("bCheck",bCheck);
+		return "board/delete_ok";
+	}
+	/*
+		1.Spring MVC
+			1) DispatcherServlet 등록 => web.xml
+				=> 클래스를 등록한 파일 셋팅(클래스 관리)
+				=> 한글 변환
+			2) 클래스 제작	
+				=> VO
+				=> Mapper
+				=> DAO
+				=> Model
+			3) application.xml(클래스 등록)
+			4) JSP 
+		-----------------------------------------------	
+			
+	 */
 	// 검색 ==> 동적 쿼리
 	
 }
