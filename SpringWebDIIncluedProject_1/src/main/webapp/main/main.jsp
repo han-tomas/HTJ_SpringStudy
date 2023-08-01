@@ -21,5 +21,16 @@
 	<div class="container">
 		<jsp:include page="${main_jsp }"></jsp:include>
 	</div>
+	<div class="container">
+		<div class="colum-sm-4">
+			
+		</div>
+		<div class="colum-sm-4">
+			
+		</div>
+		<div class="colum-sm-4">
+			
+		</div>
+	</div>
 </body>
 </html>
