@@ -76,7 +76,7 @@ public interface BoardMapper {
 			+ "WHERE no=#{no}")
 	public void boardDepthDecrement(int no);
 	
-	// 다중검색(동적쿼리)
+	// 다중검색(동적쿼리) ***
 	@Select({
 		"<script>"
 		+ "SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit "
