@@ -6,15 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<style type="text/css">
-.row{
-  margin: 0px auto;
-  width:100%;
-}
-</style>
 </head>
 <body>
 <div class="wrapper row3">
@@ -25,21 +16,15 @@
       <!-- ################################################################################################ -->
       <div id="gallery">
         <figure>
-        	<header class="heading">
-        		<form method="get" action="" class="inline">
-	        		<input type=text name=fd size=20 class="input-sm" required value="${fd }">
-	        		<input type=submit value="검색" class="btn btn-sm btn-primary">
-        		</form>
-        	</header>
           <header class="heading">${name }</header>
           <ul class="nospace clear">
           	<c:forEach var="vo" items="${list }" varStatus="s">
 	          	<c:choose>
 		          	<c:when test="${s.index%4==0 }">
-		            	<li class="one_quarter first"><a href="#"><img src="${vo.poster }" title="${vo.name}"></a></li>         	
+		            	<li class="one_quarter first"><a href="../seoul/detail.do?type=${no }&no=${vo.no}"><img src="${vo.poster }" title="${vo.title }"></a></li>         	
 		          	</c:when>
 		          	<c:otherwise>
-		            	<li class="one_quarter"><a href="#"><img src="${vo.poster }" title="${vo.name}"></a></li>        	
+		            	<li class="one_quarter"><a href="../seoul/detail.do?type=${no }&no=${vo.no}"><img src="${vo.poster }" title="${vo.title }"></a></li>        	
 		          	</c:otherwise>
 	          	</c:choose>
           	</c:forEach>
@@ -51,13 +36,13 @@
       <nav class="pagination">
         <ul>
         <c:if test="${startPage>1 }">
-          <li><a href="../food/food_find.do?page=${startPage-1 }&fd=${fd}">&laquo; Previous</a></li>        
+          <li><a href="../seoul/list.do?page=${startPage-1 }&no=${no}">&laquo; Previous</a></li>        
         </c:if>
           <c:forEach var="i" begin="${startPage }" end="${endPage }">
-          	<li ${i==curpage?"class=current":"" }><a href="../ood/food_find.do?page=${i }&fd=${fd }">${i }</a></li> 
+          	<li ${i==curpage?"class=current":"" }><a href="../seoul/list.do?page=${i }&no=${no }">${i }</a></li> 
           </c:forEach>
          <c:if test="${endPage<totalpage }"> 
-          <li><a href="../ood/food_find.do?page=${endPage+1 }&fd=${fd}">Next &raquo;</a></li>
+          <li><a href="../seoul/list.do?page=${endPage+1 }&no=${no}">Next &raquo;</a></li>
          </c:if>
         </ul>
       </nav>
