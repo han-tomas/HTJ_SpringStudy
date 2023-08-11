@@ -61,15 +61,18 @@
 				<h5 class="text-center">{{cate_info.title}}</h3>
 				<h6 class="text-center">{{cate_info.subject}}</h4>
 			</div>
+			<div style="overflow-y:auto;height: 500px">
 			<table class="table">
 				<tr>
 					<td>
 						<table class="table" v-for="fvo in food_list">
 							<tr>
 								<td width=30% class="text-center" rowspan="4">
+									<a :href="'../food/food_detail.do?fno='+fvo.fno">
 									<img :src="fvo.poster" style="width: 100%">
+									</a>
 								</td>
-								<td width=70%><h4>{{fvo.name}}&nbsp;<span style="color: orange">{{fvo.score}}</span></h4></td>
+								<td width=70%><h6><a :href="'../food/food_detail.do?fno='+fvo.fno">{{fvo.name}}</a>&nbsp;<span style="color: orange">{{fvo.score}}</span></h6></td>
 							</tr>
 							<tr>
 								<td width=70%>{{fvo.address}}</td>
@@ -84,6 +87,7 @@
 					</td>
 				</tr>
 			</table>
+			</div>
 		</div>
 	</div>
 </div>
