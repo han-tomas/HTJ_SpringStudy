@@ -105,7 +105,7 @@ $(function(){
   			<tr>
   				<td class="inline">
   					이름:<input type="text" id="name" size="15" class="input-sm">
-  					<input type="button" id="startBtn" value="입장" class="btn btn-sm btn-danger">
+  					<input type="button" id="startBtn" value="입장" class="btn btn-sm btn-danger" readonly value="${sessionScope.name}">
   					<input type="button" id="endBtn" value="퇴장" class="btn btn-sm btn-primary">
   				</td>
   			</tr>
