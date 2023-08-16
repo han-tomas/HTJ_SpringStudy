@@ -11,6 +11,6 @@ public class FoodController {
 	{
 		model.addAttribute("cno",cno);
 		model.addAttribute("main_jsp","../food/food_list.jsp");
-		return "main/main";
+		return "main/main";  
 	}
 }

@@ -26,6 +26,6 @@ public class FoodRestController {
 		CategoryVO vo = dao.foodCategoryInfoData(cno);
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(vo);
-		return json;
+		return json;  
 	}
 }

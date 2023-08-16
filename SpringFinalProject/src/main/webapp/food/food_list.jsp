@@ -32,7 +32,7 @@
     
     </div>
    </main>
-</div>  
+</div>    
 <script>
 	new Vue({
 		el:'.container',
