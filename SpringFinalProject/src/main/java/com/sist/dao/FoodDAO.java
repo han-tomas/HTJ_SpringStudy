@@ -24,4 +24,19 @@ public class FoodDAO {
 	{
 		return mapper.foodCategoryInfoData(cno);
 	}
+	public List<FoodVO> foodFindData(Map map)
+	{
+		return mapper.foodFindData(map);
+	}
+	public int foodFindTotalPage(Map map)
+	{
+		return mapper.foodFindTotalPage(map);
+	}
+//	@Select("SELECT fno,name,phone,address,type,time,parking,menu,price,score "
+//			+ "FROM food_location "
+//			+ "WHERE fno=#{fno}")
+	public FoodVO foodDetailData(int fno)
+	{
+		return mapper.foodDetailData(fno);
+	}
 }
