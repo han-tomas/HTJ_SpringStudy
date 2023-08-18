@@ -24,4 +24,18 @@ public interface RecipeMapper {
 	public int chefTotalPage();
 	@Select("SELECT * FROM chef WHERE chef=#{chef}")
 	public ChefVO chefInfoData(String chef);
+//	<select id="chefFindData" resultType="RecipeVO" parameterType="hashmap">
+//		SELECT no,poster,title,num
+//		FROM (SELECT no,poster,title,rownum as num
+//		FROM (SELECT no,poster,title
+//		FROM recipe WHERE chef=#{chef} AND title LIKE '%'||#{fd}||'%'))
+//		))
+//		WHERE num BETWEEN #{start} AND #{end}
+//	</select>
+//	<select id="chefFindCount" resultType="int" parameterType="hashmap">
+//		SELECT COUNT(*)
+//		FROM recipe WHERE chef=#{chef} AND title LIKE '%'||#{fd}||'%'
+//	</select>
+	public List<RecipeVO> chefFindData(Map map);
+	public int chefFindCount(Map map);
 }

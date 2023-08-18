@@ -24,6 +24,13 @@ public class FoodDAO {
 	{
 		return mapper.foodCategoryInfoData(cno);
 	}
+//	@Select("SELECT fno,name,address,phone,type,poster "
+//			+ "FROM food_house "
+//			+ "WHERE cno=#{cno}")
+	public List<FoodVO> foodListData(int cno)
+	{
+		return mapper.foodListData(cno);
+	}
 	public List<FoodVO> foodFindData(Map map)
 	{
 		return mapper.foodFindData(map);
