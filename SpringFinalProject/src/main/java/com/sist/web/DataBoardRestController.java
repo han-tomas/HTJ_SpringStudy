@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.StringMultipartFileEditor;
 
 import java.io.File;
+import java.net.http.HttpRequest;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -96,5 +97,43 @@ public class DataBoardRestController {
 		String json = mapper.writeValueAsString(vo);
 		return json;
 	}
-	
+	@GetMapping(value = "databoard/update_vue.do",produces = "text/plain;charset=UTF-8")
+	public String databoard_update(int no) throws Exception
+	{
+		DataBoardVO vo = dao.databoardUpdateData(no);
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writeValueAsString(vo);
+		return json;
+	}
+	@PostMapping(value = "databoard/update_ok_vue.do",produces = "text/plain;charset=UTF-8")
+	public String databard_update_ok(DataBoardVO vo)
+	{
+		String result=dao.databoardUpdate(vo);
+		return result;
+	}
+	@GetMapping(value = "databoard/delete_ok_vue.do",produces = "text/plain;charset=UTF-8")
+	public String databoard_delete(int no,String pwd,HttpServletRequest request)
+	{
+		DataBoardVO vo = dao.databaordFileInfoData(no);
+		String result=dao.databoardDelete(no, pwd);
+		if(result.equals("yes"))
+		{
+			try
+			{
+				if(vo.getFilecount()!=0)
+				{
+					String path=request.getSession().getServletContext().getRealPath("/")+"upload\\";
+					path=path.replace("\\", File.separator);
+					StringTokenizer st = new StringTokenizer(vo.getFilename(),",");
+					while(st.hasMoreTokens())
+					{
+						path=path+st.nextToken();
+						File file = new File(path);
+						file.delete();
+					}
+				}
+			}catch(Exception ex) {}
+		}
+		return result;
+	}
 }
